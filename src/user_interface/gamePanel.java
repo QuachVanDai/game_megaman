@@ -14,31 +14,30 @@ import javax.swing.JPanel;
 
 import effect.cacheDataLoader;
 import effect.frameImage;
+import gameObject.gameWorld;
 import gameObject.megaman;
+import gameObject.physicalMap;
 
 public class gamePanel extends JPanel implements Runnable, KeyListener {
 	private Thread thread;
 	private boolean isRunnning;
 	private inputManager inputManager;
-	frameImage f1;
 	private BufferedImage image;
-	private Graphics2D graph;
-	megaman me = new megaman(100, 100, 100, 100, 0.1f);
-
+	Graphics2D graph;
+	gameWorld gWorld;
 	public gamePanel() {
-		inputManager = new inputManager();
+		gWorld = new gameWorld();
+		inputManager = new inputManager(gWorld);
 		image = new BufferedImage(gameFrame.SCREEN_WIDTH, gameFrame.SCREEN_HEIGHT, BufferedImage.TYPE_INT_ARGB);
 	}
 
 	@Override
 	public void paint(Graphics g2) {
 		super.paint(g2);
-	
 		 g2.drawImage(image,0,0,this);
-
 	}
 	 public void updategame() {
-		 me.update();
+		 gWorld.update();
 	 }
 	public void renderGame() {
 		if (image == null) {
@@ -50,8 +49,9 @@ public class gamePanel extends JPanel implements Runnable, KeyListener {
 		if(graph!=null) {
 			graph.setColor(Color.RED);
 			graph.fillRect(0, 0, gameFrame.SCREEN_WIDTH, gameFrame.SCREEN_HEIGHT);
+			//System.out.println(graph);
+			gWorld.render(graph);
 			
-			me.draw(graph);
 		}
 	}
 

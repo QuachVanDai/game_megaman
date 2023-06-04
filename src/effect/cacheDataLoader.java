@@ -15,7 +15,42 @@ public class cacheDataLoader {
 	private String animationfile = "data/animation.txt";
 	private Hashtable<String, frameImage> frameImages;
 	private Hashtable<String, animation> animations;
+	private String physmapfile = "data/phys_map.txt";
 
+	private int[][] phys_map;
+
+	public void LoadPhysMap() throws IOException {
+
+		FileReader fr = new FileReader(physmapfile);
+		BufferedReader br = new BufferedReader(fr);
+
+		String line = null;
+
+		line = br.readLine();
+		int numberOfRows = Integer.parseInt(line);
+		line = br.readLine();
+		int numberOfColumns = Integer.parseInt(line);
+
+		instance.phys_map = new int[numberOfRows][numberOfColumns];
+
+		for (int i = 0; i < numberOfRows; i++) {
+			line = br.readLine();
+			String[] str = line.split(" ");
+			for (int j = 0; j < numberOfColumns; j++)
+				instance.phys_map[i][j] = Integer.parseInt(str[j]);
+		}
+
+		for (int i = 0; i < numberOfRows; i++) {
+
+			for (int j = 0; j < numberOfColumns; j++)
+				System.out.print(" " + instance.phys_map[i][j]);
+
+			System.out.println();
+		}
+
+		br.close();
+
+	}
 
 	private cacheDataLoader() {
 		frameImages = new Hashtable<String, frameImage>();
@@ -31,11 +66,6 @@ public class cacheDataLoader {
 	public static cacheDataLoader getInstance() {
 		instance = new cacheDataLoader();
 		return instance;
-	}
-
-	public void LoadData() throws IOException {
-		LoadFrame();
-		LoadAnimation();
 	}
 
 // muc dich de load 
@@ -97,7 +127,7 @@ public class cacheDataLoader {
 					imageData = ImageIO.read(new File(path));
 				}
 				if (imageData != null) {
-					
+
 					BufferedImage image = imageData.getSubimage(x, y, w, h);
 					frame.setImage(image);
 				}
@@ -157,6 +187,16 @@ public class cacheDataLoader {
 			}
 		}
 		br.close();
+	}
+
+	public void LoadData() throws IOException {
+		LoadFrame();
+		LoadAnimation();
+		LoadPhysMap();
+	}
+
+	public int[][] getPhysicalMap() {
+		return instance.phys_map;
 	}
 
 }

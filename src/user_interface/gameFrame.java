@@ -30,9 +30,8 @@ public class gameFrame extends JFrame {
 				SCREEN_HEIGHT);
 
 		gamePanel = new gamePanel();
-		addKeyListener(gamePanel);
 		add(gamePanel);
-
+		addKeyListener(gamePanel);
 	}
 
 	public void startGame() {
