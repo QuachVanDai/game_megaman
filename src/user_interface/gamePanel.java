@@ -25,6 +25,7 @@ public class gamePanel extends JPanel implements Runnable, KeyListener {
 	private BufferedImage image;
 	Graphics2D graph;
 	gameWorld gWorld;
+	
 	public gamePanel() {
 		gWorld = new gameWorld();
 		inputManager = new inputManager(gWorld);
@@ -74,7 +75,7 @@ public class gamePanel extends JPanel implements Runnable, KeyListener {
 		while (isRunnning) {
 			updategame();
 			renderGame();
-			repaint();
+		//	repaint();
 			long deltaTime = System.nanoTime() - begintime;
 			sleepTime = period - deltaTime;
 			try {

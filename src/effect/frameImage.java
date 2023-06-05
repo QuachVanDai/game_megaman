@@ -29,7 +29,7 @@ public class frameImage {
 	}
 
 	public frameImage() {
-		this.name = null;
+		name = null;
 		image = null;
 	}
 

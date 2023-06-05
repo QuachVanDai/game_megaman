@@ -13,13 +13,10 @@ public class gameFrame extends JFrame {
 	public static final int SCREEN_WIDTH = 1000;
 	public static final int SCREEN_HEIGHT = 600;
 	gamePanel gamePanel;
-
 	public gameFrame() {
-
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Toolkit toolkit = this.getToolkit(); // hoi chatgpt
 		Dimension solution = toolkit.getScreenSize();
-
 		try {
 			cacheDataLoader.getInstance().LoadData();
 		} catch (IOException ex) {
@@ -42,9 +39,7 @@ public class gameFrame extends JFrame {
 	}
 
 	public static void main(String arg[]) {
-
 		gameFrame gameFrame = new gameFrame();
 		gameFrame.startGame();
-
 	}
 }

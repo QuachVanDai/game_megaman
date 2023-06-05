@@ -9,8 +9,12 @@ import java.util.Hashtable;
 
 import javax.imageio.ImageIO;
 
+
+
+import gameObject.physicalMap;
+
 public class cacheDataLoader {
-	private static cacheDataLoader instance = null;
+	private static cacheDataLoader instance;
 	private String framefile = "data/frame.txt";
 	private String animationfile = "data/animation.txt";
 	private Hashtable<String, frameImage> frameImages;
@@ -30,32 +34,20 @@ public class cacheDataLoader {
 		int numberOfRows = Integer.parseInt(line);
 		line = br.readLine();
 		int numberOfColumns = Integer.parseInt(line);
-
 		instance.phys_map = new int[numberOfRows][numberOfColumns];
-
 		for (int i = 0; i < numberOfRows; i++) {
 			line = br.readLine();
 			String[] str = line.split(" ");
 			for (int j = 0; j < numberOfColumns; j++)
 				instance.phys_map[i][j] = Integer.parseInt(str[j]);
 		}
-
 		for (int i = 0; i < numberOfRows; i++) {
 
 			for (int j = 0; j < numberOfColumns; j++)
 				System.out.print(" " + instance.phys_map[i][j]);
-
 			System.out.println();
 		}
-
 		br.close();
-
-	}
-
-	private cacheDataLoader() {
-		frameImages = new Hashtable<String, frameImage>();
-		animations = new Hashtable<String, animation>();
-
 	}
 
 	public frameImage getFrameImage(String name) {
@@ -64,15 +56,14 @@ public class cacheDataLoader {
 	}
 
 	public static cacheDataLoader getInstance() {
-		instance = new cacheDataLoader();
-		return instance;
+		if(instance == null)
+            instance  = new cacheDataLoader();
+        return instance;
 	}
 
 // muc dich de load 
 	public void LoadFrame() throws IOException {
-
 		frameImages = new Hashtable<String, frameImage>();
-
 		FileReader fr = new FileReader(framefile);
 		BufferedReader br = new BufferedReader(fr);
 		String line = null;
@@ -141,19 +132,14 @@ public class cacheDataLoader {
 	}
 
 	public animation getAnimation(String name) {
-
 		animation animation = new animation(instance.animations.get(name));
 		return animation;
-
 	}
 
 	public void LoadAnimation() throws IOException {
-
 		animations = new Hashtable<String, animation>();
-
 		FileReader fr = new FileReader(animationfile);
 		BufferedReader br = new BufferedReader(fr);
-
 		String line = null;
 
 		if (br.readLine() == null) {
@@ -188,15 +174,14 @@ public class cacheDataLoader {
 		}
 		br.close();
 	}
-
+	public int[][] getPhysicalMap() {
+		return instance.phys_map;
+	}
 	public void LoadData() throws IOException {
 		LoadFrame();
 		LoadAnimation();
 		LoadPhysMap();
-	}
-
-	public int[][] getPhysicalMap() {
-		return instance.phys_map;
+		//System.out.println(instance.phys_map);
 	}
 
 }
