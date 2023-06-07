@@ -49,7 +49,7 @@ public class gamePanel extends JPanel implements Runnable, KeyListener {
 		}
 		if(graph!=null) {
 			graph.setColor(Color.RED);
-			graph.fillRect(0, 0, gameFrame.SCREEN_WIDTH, gameFrame.SCREEN_HEIGHT);
+			//graph.fillRect(0, 0, gameFrame.SCREEN_WIDTH, gameFrame.SCREEN_HEIGHT);
 			//System.out.println(graph);
 			gWorld.render(graph);
 			

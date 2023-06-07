@@ -31,14 +31,16 @@ public class camera extends gameObject {
         
         if(!isLocked){
         
-           megaman mainCharacter = getG_world().me;
-
-            if(mainCharacter.getPosX() - getPosX() > 400) setPosX(mainCharacter.getPosX() - 400);
-            if(mainCharacter.getPosX() - getPosX() < 200) setPosX(mainCharacter.getPosX() - 200);
-
-            if(mainCharacter.getPosY() - getPosY() > 400) setPosY(mainCharacter.getPosY() - 400); // bottom
-            else if(mainCharacter.getPosY() - getPosY() < 250) setPosY(mainCharacter.getPosY() - 250);// top 
-        }
+			/*
+			 * megaman mainCharacter = getG_world().me; if(mainCharacter.getPosX() -
+			 * getPosX() > 400) setPosX(mainCharacter.getPosX() - 400);
+			 * if(mainCharacter.getPosX() - getPosX() < 200) setPosX(mainCharacter.getPosX()
+			 * - 200);
+			 * 
+			 * if(mainCharacter.getPosY() - getPosY() > 400) setPosY(mainCharacter.getPosY()
+			 * - 400); // bottom else if(mainCharacter.getPosY() - getPosY() < 250)
+			 * setPosY(mainCharacter.getPosY() - 250);// top
+			 */        }
     
     }
 

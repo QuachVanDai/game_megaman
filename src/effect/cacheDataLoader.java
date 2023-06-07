@@ -9,19 +9,19 @@ import java.util.Hashtable;
 
 import javax.imageio.ImageIO;
 
-
-
 import gameObject.physicalMap;
 
 public class cacheDataLoader {
 	private static cacheDataLoader instance;
 	private String framefile = "data/frame.txt";
 	private String animationfile = "data/animation.txt";
+	private String backgroundmapfile = "data/background_map.txt";
 	private Hashtable<String, frameImage> frameImages;
 	private Hashtable<String, animation> animations;
 	private String physmapfile = "data/phys_map.txt";
 
 	private int[][] phys_map;
+	private int[][] background_map;
 
 	public void LoadPhysMap() throws IOException {
 
@@ -56,9 +56,13 @@ public class cacheDataLoader {
 	}
 
 	public static cacheDataLoader getInstance() {
-		if(instance == null)
-            instance  = new cacheDataLoader();
-        return instance;
+		if (instance == null)
+			instance = new cacheDataLoader();
+		return instance;
+	}
+
+	public int[][] getBackgroundMap() {
+		return instance.background_map;
 	}
 
 // muc dich de load 
@@ -131,6 +135,39 @@ public class cacheDataLoader {
 
 	}
 
+	public void LoadBackgroundMap() throws IOException {
+
+		FileReader fr = new FileReader(backgroundmapfile);
+		BufferedReader br = new BufferedReader(fr);
+
+		String line = null;
+
+		line = br.readLine();
+		int numberOfRows = Integer.parseInt(line);
+		line = br.readLine();
+		int numberOfColumns = Integer.parseInt(line);
+
+		instance.background_map = new int[numberOfRows][numberOfColumns];
+
+		for (int i = 0; i < numberOfRows; i++) {
+			line = br.readLine();
+			String[] str = line.split(" |  ");
+			for (int j = 0; j < numberOfColumns; j++)
+				instance.background_map[i][j] = Integer.parseInt(str[j]);
+		}
+
+		for (int i = 0; i < numberOfRows; i++) {
+
+			for (int j = 0; j < numberOfColumns; j++)
+				System.out.print(" " + instance.background_map[i][j]);
+
+			System.out.println();
+		}
+
+		br.close();
+
+	}
+
 	public animation getAnimation(String name) {
 		animation animation = new animation(instance.animations.get(name));
 		return animation;
@@ -174,14 +211,17 @@ public class cacheDataLoader {
 		}
 		br.close();
 	}
+
 	public int[][] getPhysicalMap() {
 		return instance.phys_map;
 	}
+
 	public void LoadData() throws IOException {
 		LoadFrame();
 		LoadAnimation();
 		LoadPhysMap();
-		//System.out.println(instance.phys_map);
+		LoadBackgroundMap();
+		// System.out.println(instance.phys_map);
 	}
 
 }

@@ -125,135 +125,135 @@ public class megaman extends human {
 	@Override
 	public void draw(Graphics2D g2) {
 
-//		switch (getState()) {
-//
-//		case ALIVE:
-//		case NOBEHURT:
-//			if (getState() == NOBEHURT && (System.nanoTime() / 10000000) % 2 != 1) {
-//				System.out.println("Plash...");
-//			} else {
-//
-//				if (getIsLanding()) {
-//
-//					if (getDirection() == RIGHT_DIR) {
-//						landingForwardAnim.setCurrentFrame(landingBackAnim.getCurrentFrame());
-////                            landingForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), 
-////                                    (int) getPosY() - (int) getG_world().camera.getPosY() + (getBoundForCollisionWithMap().height/2 - landingForwardAnim.getCurrentImage().getHeight()/2),
-////                                    g2);
-//					} else {
-////                            landingBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), 
-////                                    (int) getPosY() - (int) getG_world()).camera.getPosY() + (getBoundForCollisionWithMap().height/2 - landingBackAnim.getCurrentImage().getHeight()/2),
-////                                    g2);
-//					}
-//
-//				} else if (getIsJumping()) {
-//
-//					if (getDirection() == RIGHT_DIR) {
-//						flyForwardAnim.Update(System.nanoTime());
-//						if (isShooting) {
-//							flyShootingForwardAnim.setCurrentFrame(flyForwardAnim.getCurrentFrame());
-//							// flyShootingForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX())
-//							// + 10, (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
-//						} else {
-//							// flyForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
-//							// getPosY() - (int) getG_world().camera.getPosY(), g2);
-//						}
-//					} else {
-//						flyBackAnim.Update(System.nanoTime());
-//						if (isShooting) {
-//							flyShootingBackAnim.setCurrentFrame(flyBackAnim.getCurrentFrame());
-//							// flyShootingBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()) -
-//							// 10, (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
-//						} else {
-//							// flyBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
-//							// getPosY() - (int) getG_world().camera.getPosY(), g2);
-//						}
-//					}
-//
-//				} else if (getIsDicking()) {
-//
-//					if (getDirection() == RIGHT_DIR) {
-//						dickForwardAnim.Update(System.nanoTime());
-//						// dickForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()),
-//						// (int) getPosY() - (int) getG_world().camera.getPosY() +
-//						// (getBoundForCollisionWithMap().height/2 -
-//						// dickForwardAnim.getCurrentImage().getHeight()/2),
-//						// g2);
-//					} else {
-//						dickBackAnim.Update(System.nanoTime());
-//						// dickBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()),
-//						// (int) getPosY() - (int) getG_world().camera.getPosY() +
-//						// (getBoundForCollisionWithMap().height/2 -
-//						// dickBackAnim.getCurrentImage().getHeight()/2),
-//						// g2);
-//					}
-//
-//				} else {
-//					if (getSpeedX() > 0) {
-//						runForwardAnim.Update(System.nanoTime());
-//						if (isShooting) {
-//							runShootingForwarAnim.setCurrentFrame(runForwardAnim.getCurrentFrame() - 1);
-//							// runShootingForwarAnim.draw((int) (getPosX() - getG_world().camera.getPosX()),
-//							// (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
-//						} else
-//						// runForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
-//						// getPosY() - (int) getG_world().camera.getPosY(), g2);
-//						if (runForwardAnim.getCurrentFrame() == 1)
-//							runForwardAnim.setIgnoreFrame(0);
-//					} else if (getSpeedX() < 0) {
-//						runBackAnim.Update(System.nanoTime());
-//						if (isShooting) {
-//							runShootingBackAnim.setCurrentFrame(runBackAnim.getCurrentFrame() - 1);
-//							// runShootingBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()),
-//							// (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
-//						} else
-//						// runBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
-//						// getPosY() - (int) getG_world().camera.getPosY(), g2);
-//						if (runBackAnim.getCurrentFrame() == 1)
-//							runBackAnim.setIgnoreFrame(0);
-//					} else {
-//						if (getDirection() == RIGHT_DIR) {
-//							if (isShooting) {
-//								idleShootingForwardAnim.Update(System.nanoTime());
-//								// idleShootingForwardAnim.draw((int) (getPosX() -
-//								// getG_world().camera.getPosX()), (int) getPosY() - (int)
-//								// getG_world().camera.getPosY(), g2);
-//							} else {
-//								idleForwardAnim.Update(System.nanoTime());
-//								// idleForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
-//								// getPosY() - (int) getG_world().camera.getPosY(), g2);
-//							}
-//						} else {
-//							if (isShooting) {
-//								idleShootingBackAnim.Update(System.nanoTime());
-//								// idleShootingBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()),
-//								// (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
-//							} else {
-//								idleBackAnim.Update(System.nanoTime());
-//								// idleBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
-//								// getPosY() - (int) getG_world().camera.getPosY(), g2);
-//							}
-//						}
-//					}
-//				}
-//			}
-//
-//			break;
-//
-//		case BEHURT:
-//                if(getDirection() == RIGHT_DIR){
-//                    behurtForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
-//                }else{
-//                    behurtBackAnim.setCurrentFrame(behurtForwardAnim.getCurrentFrame());
-//                    behurtBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
-//                }
-//			break;
-//
-//		case FEY:
-//
-//			break;
-//
-//		}
+		switch (getState()) {
+
+		case ALIVE:
+		case NOBEHURT:
+			if (getState() == NOBEHURT && (System.nanoTime() / 10000000) % 2 != 1) {
+				System.out.println("Plash...");
+			} else {
+
+				if (getIsLanding()) {
+
+					if (getDirection() == RIGHT_DIR) {
+						landingForwardAnim.setCurrentFrame(landingBackAnim.getCurrentFrame());
+                            landingForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), 
+                                    (int) getPosY() - (int) getG_world().camera.getPosY() + (getBoundForCollisionWithMap().height/2 - landingForwardAnim.getCurrentImage().getHeight()/2),
+                                    g2);
+					} else {
+                            landingBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), 
+                                    (int) getPosY() - (int)getG_world().camera.getPosY() + (getBoundForCollisionWithMap().height/2 - landingBackAnim.getCurrentImage().getHeight()/2),
+                                    g2);
+					}
+
+				} else if (getIsJumping()) {
+
+					if (getDirection() == RIGHT_DIR) {
+						flyForwardAnim.Update(System.nanoTime());
+						if (isShooting) {
+							flyShootingForwardAnim.setCurrentFrame(flyForwardAnim.getCurrentFrame());
+							 flyShootingForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX())
+							 + 10, (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
+						} else {
+							 flyForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
+							 getPosY() - (int) getG_world().camera.getPosY(), g2);
+						}
+					} else {
+						flyBackAnim.Update(System.nanoTime());
+						if (isShooting) {
+							flyShootingBackAnim.setCurrentFrame(flyBackAnim.getCurrentFrame());
+							 flyShootingBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()) -
+							 10, (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
+						} else {
+							 flyBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
+							 getPosY() - (int) getG_world().camera.getPosY(), g2);
+						}
+					}
+
+				} else if (getIsDicking()) {
+
+					if (getDirection() == RIGHT_DIR) {
+						dickForwardAnim.Update(System.nanoTime());
+						 dickForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()),
+						 (int) getPosY() - (int) getG_world().camera.getPosY() +
+						 (getBoundForCollisionWithMap().height/2 -
+						 dickForwardAnim.getCurrentImage().getHeight()/2),
+						 g2);
+					} else {
+						dickBackAnim.Update(System.nanoTime());
+						 dickBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()),
+						 (int) getPosY() - (int) getG_world().camera.getPosY() +
+						 (getBoundForCollisionWithMap().height/2 -
+						 dickBackAnim.getCurrentImage().getHeight()/2),
+						 g2);
+					}
+
+				} else {
+					if (getSpeedX() > 0) {
+						runForwardAnim.Update(System.nanoTime());
+						if (isShooting) {
+							runShootingForwarAnim.setCurrentFrame(runForwardAnim.getCurrentFrame() - 1);
+							 runShootingForwarAnim.draw((int) (getPosX() - getG_world().camera.getPosX()),
+							 (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
+						} else
+						 runForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
+						 getPosY() - (int) getG_world().camera.getPosY(), g2);
+						if (runForwardAnim.getCurrentFrame() == 1)
+							runForwardAnim.setIgnoreFrame(0);
+					} else if (getSpeedX() < 0) {
+						runBackAnim.Update(System.nanoTime());
+						if (isShooting) {
+							runShootingBackAnim.setCurrentFrame(runBackAnim.getCurrentFrame() - 1);
+							 runShootingBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()),
+							 (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
+						} else
+						 runBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
+						 getPosY() - (int) getG_world().camera.getPosY(), g2);
+						if (runBackAnim.getCurrentFrame() == 1)
+							runBackAnim.setIgnoreFrame(0);
+					} else {
+						if (getDirection() == RIGHT_DIR) {
+							if (isShooting) {
+								idleShootingForwardAnim.Update(System.nanoTime());
+								 idleShootingForwardAnim.draw((int) (getPosX() -
+								 getG_world().camera.getPosX()), (int) getPosY() - (int)
+								 getG_world().camera.getPosY(), g2);
+							} else {
+								idleForwardAnim.Update(System.nanoTime());
+								 idleForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
+								 getPosY() - (int) getG_world().camera.getPosY(), g2);
+							}
+						} else {
+							if (isShooting) {
+								idleShootingBackAnim.Update(System.nanoTime());
+								 idleShootingBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()),
+								 (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
+							} else {
+								idleBackAnim.Update(System.nanoTime());
+								 idleBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int)
+								 getPosY() - (int) getG_world().camera.getPosY(), g2);
+							}
+						}
+					}
+				}
+			}
+
+			break;
+
+		case BEHURT:
+                if(getDirection() == RIGHT_DIR){
+                    behurtForwardAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
+                }else{
+                    behurtBackAnim.setCurrentFrame(behurtForwardAnim.getCurrentFrame());
+                    behurtBackAnim.draw((int) (getPosX() - getG_world().camera.getPosX()), (int) getPosY() - (int) getG_world().camera.getPosY(), g2);
+                }
+			break;
+
+		case FEY:
+
+			break;
+
+		}
 
 		 drawBoundForCollisionWithMap(g2);
 		// drawBoundForCollisionWithEnemy(g2);
@@ -329,33 +329,33 @@ public class megaman extends human {
 
 		if (!isShooting && !getIsDicking()) {
 
-//            shooting1.play();
-//            
-//          Bullet bullet = new BlueFire(getPosX(), getPosY(), getG_world());
-//            if(getDirection() == LEFT_DIR) {
-//                bullet.setSpeedX(-10);
-//                bullet.setPosX(bullet.getPosX() - 40);
-//                if(getSpeedX() != 0 && getSpeedY() == 0){
-//                    bullet.setPosX(bullet.getPosX() - 10);
-//                    bullet.setPosY(bullet.getPosY() - 5);
-//                }
-//            }else {
-//                bullet.setSpeedX(10);
-//                bullet.setPosX(bullet.getPosX() + 40);
-//                if(getSpeedX() != 0 && getSpeedY() == 0){
-//                    bullet.setPosX(bullet.getPosX() + 10);
-//                    bullet.setPosY(bullet.getPosY() - 5);
-//                }
-//            }
-//            if(getIsJumping())
-//                bullet.setPosY(bullet.getPosY() - 20);
-//            
-//            bullet.setTeamType(getTeamType());
-//            getG_world().bulletManager.addObject(bullet);
-//            
-//            lastShootingTime = System.nanoTime();
-//            isShooting = true;
-//            
+          //  shooting1.play();
+            
+          bullet bullet = new blueFire(getPosX(), getPosY(), getG_world());
+            if(getDirection() == LEFT_DIR) {
+                bullet.setSpeedX(-10);
+                bullet.setPosX(bullet.getPosX() - 40);
+                if(getSpeedX() != 0 && getSpeedY() == 0){
+                    bullet.setPosX(bullet.getPosX() - 10);
+                    bullet.setPosY(bullet.getPosY() - 5);
+                }
+            }else {
+                bullet.setSpeedX(10);
+                bullet.setPosX(bullet.getPosX() + 40);
+                if(getSpeedX() != 0 && getSpeedY() == 0){
+                    bullet.setPosX(bullet.getPosX() + 10);
+                    bullet.setPosY(bullet.getPosY() - 5);
+                }
+            }
+            if(getIsJumping())
+                bullet.setPosY(bullet.getPosY() - 20);
+            
+            bullet.setTeamType(getTeamType());
+            getG_world().bullet_ma.addObject(bullet);
+            
+            lastShootingTime = System.nanoTime();
+            isShooting = true;
+            
 		}
 
 	}
